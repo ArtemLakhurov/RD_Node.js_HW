@@ -130,7 +130,7 @@ class HabitController {
     const result: Record<string, string | undefined> = {};
     let key = null;
 
-    for (let part of parts) {
+    for (const part of parts) {
       if (part.startsWith('--')) {
         key = part.slice(2);
         result[key] = undefined;

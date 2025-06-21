@@ -2,7 +2,6 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { THabit } from '../types/index';
-import { getLastId } from '../utils/index';
 
 class HabitsModel {
   private DB: string;

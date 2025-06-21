@@ -1,3 +1,4 @@
+import { ENV } from '../config/index';
 import { HabitsModel } from '../models/index';
 import { Frequency, THabit } from '../types/index';
 import {
@@ -83,11 +84,9 @@ class HabitService {
     }
   };
 
-  public getHabitsStats = async (period: string | undefined) => {
-    if (!Number(period)) {
-      throw new Error('Period is required');
-    }
-
+  public getHabitsStats = async (
+    period: string | number = ENV.DEFAULT_PERIOD || 7
+  ) => {
     const habits = await HabitsModel.getHabitsList();
 
     const habitsWithStats = habits.map((habit) => ({
@@ -101,7 +100,7 @@ class HabitService {
     console.table(habitsWithStats);
   };
 
-  private now = () => Date.now() - +(process.env.DAY_OFFSET || 0) * DAY;
+  private now = () => Date.now() - +(ENV.DAY_OFFSET || 0) * DAY;
 
   private calculateCompletionRateMs = (n: number, habit: THabit) => {
     const now = new Date();

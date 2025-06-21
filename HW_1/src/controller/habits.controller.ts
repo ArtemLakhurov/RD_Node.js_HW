@@ -27,7 +27,7 @@ class HabitController {
     ],
     [Commands.LIST]: [],
     [Commands.STATS]: [
-      { isRequired: true, valueRequired: true, option: Options.PERIOD },
+      { isRequired: false, valueRequired: true, option: Options.PERIOD },
     ],
     [Commands.UPDATE]: [
       { isRequired: true, valueRequired: true, option: Options.ID },
